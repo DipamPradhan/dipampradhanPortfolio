@@ -313,6 +313,27 @@
     .header_section ul li {
       font-size: 1.2rem;
     }
+
+    .hero_section .contact {
+        color: white;
+        font-size: 27px;
+        display: flex;
+        gap: 40px;
+        padding: 20px;
+        border-radius: 8px;
+        flex-direction: column;
+        margin-top: 90px;
+        width: 2.6%;
+        position: fixed;
+        z-index: 1000;
+        background: #393e46;
+        border: 2px solid #393e46;
+        box-shadow: inset 6px 6px 0px rgba(0, 0, 0, 1),
+          inset -6px -6px 0px rgba(255, 255, 255, 0.1);
+        left: -100%;
+        transition: left 0.5s ease, box-shadow 0.3s ease-in-out,
+          border 0.3s ease-in-out;
+      }
   
     /* Hero section positioning fixes */
     .hero_section_content {
@@ -325,6 +346,7 @@
       width: 100%;
       margin: 0 auto;
       gap: 30px;
+      margin-top: -100px;
       padding-top: 30px;
     }
   
@@ -387,160 +409,249 @@
   }
   
   @media (max-width: 576px) {
-    /* Mobile contact section */
-    .mobile_contact {
-      display: block;
-    }
+    .header_section .container {
+        flex-direction: column;
+        align-items: center;
+      }
+    
+      .header_section .nav_elements ul {
+        gap: 20px;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      .hero_section{
+        height: 400px;
+      }
+    
+      .header_section ul li {
+        font-size: 1.2rem;
+      }
   
-    /* Hide sliding contact panel */
-    .hero_section .contact {
-      display: none !important;
-    }
+      .hero_section .contact {
+          color: white;
+          font-size: 24px;
+          display: flex;
+          gap: 40px;
+          padding: 20px;
+          border-radius: 7px;
+          flex-direction: column;
+          margin-top: 0px;
+          width: 2.5%;
+          position: fixed;
+          z-index: 1000;
+          background: #393e46;
+          border: 2px solid #393e46;
+          box-shadow: inset 6px 6px 0px rgba(0, 0, 0, 1),
+            inset -6px -6px 0px rgba(255, 255, 255, 0.1);
+          left: -100%;
+          transition: left 0.5s ease, box-shadow 0.3s ease-in-out,
+            border 0.3s ease-in-out;
+        }
+    
+      /* Hero section positioning fixes */
+      .hero_section_content {
+        position: relative;
+        top: 0;
+        left: 0;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        width: 100%;
+        margin: 0 auto;
+        gap: 30px;
+        margin-top: -100px;
+        padding-top: 30px;
+      }
+    
+      .hero_section .overlay {
+        height: 0px;
+        width: 100%;
+      }
+    
+      /* Text alignment fixes */
+      .hero_section_content .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+      }
+
+      .hero_section_content .image_container img {
+        height: 200px;
+        width: 200px;
+      }
+    
+      .hero_section_content .intro .intro_first,
+      .hero_section_content .intro .intro_next {
+        padding-left: 0;
+        text-align: center;
+      }
+    
+      .hero_section_content h1 {
+        font-size: 34px;
+        width: 100%;
+      }
+    
+      .hero_section_content .intro .name,
+      .hero_section_content .intro .title {
+        display: block;
+        font-size: 28px;
+        width: 100%;
+        white-space: nowrap;
+      }
+    
+      /* About section adjustments */
+      .about_section {
+        padding: 30px 0;
+      }
+    
+      .about_section .container {
+        width: 90%;
+        padding: 0 15px;
+      }
+    
+      .about_section h2 {
+        font-size: 30px;
+      }
+    
+      .about_section p {
+        font-size: 16px;
+        line-height: 1.5;
+      }
+    
+      .about_section ul {
+        font-size: 16px;
+      }
+    
+      .about_section ul li {
+        margin-bottom: 8px;
+      }
   
-    /* Mobile contact section adjustments */
-    .mobile_contact h2 {
-      font-size: 28px;
-      margin-bottom: 20px;
-    }
-  
-    .mobile_contact .social_links {
-      gap: 25px;
-    }
-  
-    .mobile_contact .social_links i {
-      font-size: 30px;
-    }
-  
-    /* Improved image sizing */
-    .hero_section_content .image_container img {
-      height: 175px;
-      width: 175px;
-      margin-top: 0;
-    }
-  
-    /* Better text sizing */
-    .hero_section_content h1 {
-      font-size: 22px;
-      margin-bottom: 5px;
-    }
-  
-    .hero_section_content .intro .intro_first {
-      margin-top: 10px;
-    }
-  
-    .hero_section_content .intro .name {
-      font-size: 18px;
-    }
-  
-    .hero_section_content .intro .title {
-      font-size: 16px;
-    }
-  
-    .hero_section_content .intro .intro_next {
-      margin-top: 10px;
-      margin-bottom: 10px;
-    }
-  
-    /* About section improvements */
-    .about_section {
-      padding: 25px 0;
-    }
-  
-    .about_section .container {
-      width: 95%;
-      padding: 0 10px;
-    }
-  
-    .about_section h2 {
-      font-size: 24px;
-      margin-bottom: 15px;
-    }
-  
-    .about_section p {
-      font-size: 15px;
-      line-height: 1.4;
-      margin-bottom: 20px;
-      text-align: left;
-    }
-  
-    .about_section ul {
-      font-size: 15px;
-      text-align: left;
-    }
-  
-    .redirect {
-      bottom: 30px;
-      right: 15px; /* Move it a bit more to the right */
-    }
-  
-    .redirect button {
-      padding: 8px 12px; /* Make button smaller on mobile */
-      font-size: 16px;
-    }
-  
-    /* Add space after mobile contact section to prevent overlap */
-    .mobile_contact {
-      padding-bottom: 60px; /* Add extra space at the bottom */
-    }
-  
-    /* Ensure email icon (last item) has no overlap */
-    .mobile_contact .social_links a:last-child {
-      margin-right: 50px; /* Extra space for last icon */
-    }
   }
   
-  @media (max-width: 375px) {
+  @media (max-width: 433px) {
     /* Very small screens */
-    .header_section .nav_elements ul {
-      flex-direction: row;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 5px;
-    }
+    .header_section .container {
+        flex-direction: column;
+        align-items: center;
+      }
+    
+      .header_section .nav_elements ul {
+        gap: 20px;
+        flex-wrap: wrap;
+        justify-content: center;
+
+      }
+
+
+
+      .hero_section{
+        height: 400px;
+      }
+    
+      .header_section ul li {
+        font-size: 18px;
+      }
   
-    .header_section ul li {
-      font-size: 0.8rem;
-      padding: 2px;
-    }
-  
-    .mobile_contact h2 {
-      font-size: 24px;
-      margin-bottom: 15px;
-    }
-  
-    .mobile_contact .social_links {
-      gap: 20px;
-    }
-  
-    .mobile_contact .social_links i {
-      font-size: 25px;
-    }
-  
-    .hero_section_content .image_container img {
-      height: 150px;
-      width: 150px;
-    }
-  
-    .hero_section_content h1 {
-      font-size: 20px;
-    }
-  
-    .hero_section_content .intro .name {
-      font-size: 16px;
-    }
-  
-    .hero_section_content .intro .title {
-      font-size: 14px;
-    }
-  
-    .redirect {
-      bottom: 20px;
-      right: 10px;
-    }
-  
-    .redirect button {
-      padding: 6px 10px;
-      font-size: 14px;
-    }
+      .hero_section .contact {
+          color: white;
+          font-size: 20px;
+          display: flex;
+          gap: 40px;
+          padding: 20px;
+          border-radius: 7px;
+          flex-direction: column;
+          margin-top: 0px;
+          width: 2.1%;
+          position: fixed;
+          z-index: 1000;
+          background: #393e46;
+          border: 2px solid #393e46;
+          box-shadow: inset 6px 6px 0px rgba(0, 0, 0, 1),
+            inset -6px -6px 0px rgba(255, 255, 255, 0.1);
+          left: -100%;
+          transition: left 0.5s ease, box-shadow 0.3s ease-in-out,
+            border 0.3s ease-in-out;
+        }
+    
+      /* Hero section positioning fixes */
+      .hero_section_content {
+        position: relative;
+        top: 0;
+        left: 0;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        width: 100%;
+        margin: 0 auto;
+        gap: 30px;
+        margin-top: -100px;
+        padding-top: 30px;
+      }
+    
+      .hero_section .overlay {
+        height: 0px;
+        width: 100%;
+      }
+    
+      /* Text alignment fixes */
+      .hero_section_content .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+      }
+
+      .hero_section_content .image_container img {
+        height: 170px;
+        width: 170px;
+      }
+    
+      .hero_section_content .intro .intro_first,
+      .hero_section_content .intro .intro_next {
+        padding-left: 0;
+        text-align: center;
+      }
+    
+      .hero_section_content h1 {
+        font-size: 28px;
+        width: 100%;
+      }
+    
+      .hero_section_content .intro .name,
+      .hero_section_content .intro .title {
+        display: block;
+        font-size: 20px;
+        width: 100%;
+        white-space: nowrap;
+      }
+    
+      /* About section adjustments */
+      .about_section {
+        padding: 30px 0;
+      }
+    
+      .about_section .container {
+        width: 90%;
+        padding: 0 15px;
+      }
+    
+      .about_section h2 {
+        font-size: 30px;
+      }
+    
+      .about_section p {
+        font-size: 16px;
+        line-height: 1.5;
+      }
+    
+      .about_section ul {
+        font-size: 16px;
+      }
+    
+      .about_section ul li {
+        margin-bottom: 8px;
+      }
   }
   

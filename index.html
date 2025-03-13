@@ -141,13 +141,14 @@
               <strong>Course:</strong> B.Sc. in Computer Science and Information
               Technology
             </li>
+            <li><strong>Email:</strong> meedipam@gmail.com</li>
           </ul>
         </div>
       </div>
     </div>
 
     <!-- Mobile Contact Section -->
-    <div class="mobile_contact" id="mobileContact">
+    <!-- <div class="mobile_contact" id="mobileContact">
       <div class="container">
         <h2>Contact Me</h2>
         <div class="social_links">
@@ -171,7 +172,7 @@
           </a>
         </div>
       </div>
-    </div>
+    </div> -->
 
     <!-- Scroll to top button -->
     <div class="redirect" id="redirect" style="display: none">
@@ -189,33 +190,18 @@
       document
         .getElementById("contactButton")
         .addEventListener("click", function () {
-          // Check if we're on mobile
-          if (window.innerWidth <= 576) {
-            // On mobile, get the contact section position
-            var mobileContact = document.getElementById("mobileContact");
-            var contactPosition =
-              mobileContact.getBoundingClientRect().top + window.pageYOffset;
+          var contactDiv = document.getElementById("contactDiv");
 
-            // Scroll to the contact section with a slight offset for better visibility
-            window.scrollTo({
-              top: contactPosition - 20,
-              behavior: "smooth",
-            });
-          } else {
-            // On desktop, use the sliding panel
-            var contactDiv = document.getElementById("contactDiv");
-            contactDiv.classList.toggle("active");
-          }
+          // Toggle the 'active' class to slide in/out the contact div
+          contactDiv.classList.toggle("active");
         });
 
-      // Scroll to top button
       document
         .getElementById("redirect")
         .addEventListener("click", function () {
           window.scrollTo(0, 0);
         });
 
-      // Show/hide scroll to top button
       document.addEventListener("scroll", function () {
         var redirect = document.getElementById("redirect");
 
@@ -225,19 +211,9 @@
           redirect.style.display = "none";
         }
       });
-
-      // Home button click
       document.getElementById("home").addEventListener("click", function () {
         var redirect = document.getElementById("redirect");
         redirect.style.display = "none";
-      });
-
-      // Handle resize events
-      window.addEventListener("resize", function () {
-        var contactDiv = document.getElementById("contactDiv");
-        if (window.innerWidth <= 576) {
-          contactDiv.classList.remove("active"); // Hide sliding panel when resizing to mobile
-        }
       });
     </script>
   </body>
