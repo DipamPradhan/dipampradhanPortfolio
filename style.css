@@ -1,0 +1,413 @@
+* {
+    margin: 0;
+    padding: 0;
+  }
+  
+  body{
+    background-color: #393e46;
+  }
+  
+  .header_section {
+    padding: 10px 0;
+    /* background-color: #393e46; */
+    color: white;
+    width: 100%;
+    /* display: flex; */
+    /* justify-content: space-between; */
+    /* gap: 50px;  */
+  }
+  
+  .header_section .container {
+    display: flex;
+    justify-content: space-evenly;
+  }
+  
+  .header_section .nav_elements ul {
+    list-style: none;
+    display: flex;
+    justify-content: space-evenly;
+    gap: 50px;
+    font-family: "Rubik Doodle Shadow", system-ui;
+  }
+  
+  a {
+    text-decoration: none;
+    color: white;
+  }
+  
+  .header_section ul li {
+    font-size: 1.8rem;
+    font-weight: 600;
+    text-decoration: none;
+  }
+  
+  .header_section ul li:hover {
+    cursor: pointer;
+    /* display: inline-block; */
+    border-bottom: 2px solid #4deeea;
+    background-color: #393e46;
+    border-radius: 20px;
+    opacity: 0.6;
+  }
+  
+  .header_section .nav_elements li .braces {
+    color: #4deeea;
+    font-size: 18px;
+  }
+  
+  .header_section .logo h2 {
+    text-align: center;
+    position: relative;
+    font-size: 40px;
+    /* font-family: ; */
+    font-family: "Press Start 2P", system-ui;
+    padding: 10px 0;
+    /* font-family: ; */
+    transition: color 0.3s ease;
+  }
+  
+  .header_section .logo h2 a:hover {
+    color: transparent; /* Hide the original text */
+  }
+  .header_section .logo h2 a::after {
+    content: "Dipam";
+    position: absolute;
+    left: 0;
+    right: 0;
+    text-align: center;
+    opacity: 0; /* Initially hidden */
+    transition: opacity 0.3s ease; /* Smoothly fade in the new text */
+  }
+  
+  .header_section .logo h2 a:hover {
+    top: -5px;
+    color: transparent; /* Fade out the original text */
+  }
+  
+  .header_section .logo h2 a:hover::after {
+    opacity: 1; /* Fade in the new text */
+    color: white;
+  }
+  
+  /* .header_section .logo h2::after{
+    content: "Dipam";
+    position: absolute;
+    left: 0;
+    top: 0;
+    opacity: 0;
+    transition: opacity 0.3s;
+    
+  } */
+  
+  /* .header_section .logo h2:hover::after{
+    opacity: 1;
+  } */
+  
+  /* .header_section .logo h2:hover {
+   display: none;
+  } */
+  .header_section .nav_elements ul li {
+    text-align: center;
+    font-size: 19px;
+    margin-top: 13px;
+  }
+  
+  .hero_section {
+    background-color: #393e46;
+    position: relative;
+  }
+  
+  .hero_section .overlay {
+    height: 800px;
+    width: 100%;
+  }
+  
+  .hero_section_content {
+    position: absolute;
+    top: 15%;
+    left: 10%;
+    display: flex;
+    gap: 200px;
+  }
+  
+  .hero_section_content .code_block .code {
+    color: #4deeea;
+    font-size: 18px;
+  }
+  
+  .hero_section_content .code_block {
+    color: #4deeea;
+    /* text-align: center; */
+    margin-top: 10px;
+    font-size: 25px;
+    font-family: "Kanit", sans-serif;
+  }
+  
+  .hero_section_content h1 {
+    color: white;
+    font-size: 45px;
+    font-family: "Rock Salt", cursive;
+  }
+  
+  .hero_section_content .intro .intro_first {
+    padding-left: 50px;
+    margin-top: 20px;
+  }
+  
+  .hero_section_content .intro .code_next {
+    color: #4deeea;
+    font-size: 16px;
+    font-family: "Kanit", sans-serif;
+  }
+  
+  .hero_section_content .intro .name {
+    color: white;
+    font-size: 30px;
+    font-family: "Archivo Black", sans-serif;
+  }
+  
+  .hero_section_content .intro .title {
+    color: white;
+    font-size: 28px;
+    font-family: "Archivo Black", sans-serif;
+  }
+  
+  .hero_section_content .intro .intro_next {
+    padding-left: 50px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+  
+  /* Initial state: Contact box hidden off-screen to the left */
+  .hero_section .contact {
+    color: white;
+    font-size: 40px;
+    display: flex;
+    gap: 40px;
+    padding: 20px;
+    border-radius: 10px;
+    flex-direction: column;
+    margin-top: 90px;
+    width: 3%; /* You can adjust this width as needed */
+    position: fixed;
+    z-index: 1000; 
+  
+    /* Background to match the page */
+    background: #393e46;
+  
+    /* Initially, border blends with the background */
+    border: 2px solid #393e46;
+  
+    /* Strong, sharp inset shadow for deep carving effect */
+    box-shadow: inset 6px 6px 0px rgba(0, 0, 0, 1),   /* Strong inner shadow (no blur) */
+                inset -6px -6px 0px rgba(255, 255, 255, 0.1); /* Subtle highlight */
+  
+    /* Initially, position the contact box off-screen to the left */
+    left: -100%;  /* Start off-screen */
+    transition: left 0.5s ease, box-shadow 0.3s ease-in-out, border 0.3s ease-in-out;
+  }
+  
+  /* When the contact box is active, slide it in */
+  .hero_section .contact.active {
+    left: 0;  /* Move to visible position */
+  }
+  
+  /* Neon Glow on Hover */
+  .hero_section .contact:hover {
+    box-shadow: inset 6px 6px 0px rgba(0, 0, 0, 1),  
+                inset -6px -6px 0px rgba(255, 255, 255, 0.1),  
+                0 0 12px #4deeea,  /* Soft glow */
+                0 0 24px #4deeea;  /* Outer neon effect */
+  
+    border: 2px solid #4deeea; /* Neon border on hover */
+  }
+  
+  
+  
+  .hero_section .contact i {
+    transition: transform 0.3s ease, color 0.3s ease;
+    color: white; /* Default color for icons */
+  }
+  
+  /* Neon Glow on Icon Hover */
+  .hero_section .contact i:hover {
+    color: #4deeea; /* Neon color on hover */
+    transform: scale(1.1);  /* Slightly grow the icon */
+    cursor: pointer;
+  }
+  
+  
+  
+  
+  
+  
+  
+  .hero_section_content .image_container img {
+    height: 500px;
+    margin-top: -30px;
+    width: 100%;
+    border-radius: 50%;
+    box-shadow: #4deeea 0px 13px 27px -5px, #4deeea 0px 8px 16px -8px;
+  }
+  
+  /* .footer_section .container {
+    display: flex;
+    flex-wrap: wrap;
+    row-gap: 30px;
+    justify-content: space-between;
+    width: 95%;
+    color: white;
+    padding: 20px 0;
+  }
+  
+  .footer_section {
+    background-color: black;
+    padding: 40px 0;
+  }
+  
+  .footer_section ul {
+    list-style: none;
+  }
+  
+  .footer_section h4 {
+    font-size: 22px;
+    padding-bottom: 10px;
+  }
+  
+  .footer_section .footer_link .social_icons ul {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+    text-align: center;
+    align-items: center;
+  }
+  
+  .footer_section ul li {
+    padding: 3px 0;
+  }
+  
+  .footer_section .social_icons li {
+    height: 35px;
+    width: 35px;
+    border-radius: 50%;
+    padding: 0;
+    background-color: white;
+    color: black;
+  }
+  
+  .footer_section .social_icons li i {
+    margin-top: 10px;
+    font-size: 17px;
+  }
+  
+  .footer_section p {
+    color: white;
+    text-align: center;
+    width: 85%;
+    margin: auto;
+    margin-top: 40px;
+    border-top: 1px solid white;
+    padding-top: 40px;
+  } */
+  
+  .active_page {
+    border-bottom: 1.9px solid #4deeea;
+    /* background-color: #393e46; */
+    border-radius: 20px;
+    /* opacity: 0.6; */
+    
+  }
+  
+  .about_section {
+    background-color: #393e46;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 50px 0;
+  }
+  
+  .about_section .container {
+    width: 80%;
+    text-align: center;
+  }
+  
+  .about_section h2 {
+    color: #4deeea;
+    font-family: "Rock Salt", cursive;
+    font-size: 36px;
+    margin-bottom: 20px;
+  }
+  
+  .about_section p {
+    color: white;
+    font-family: "Kanit", sans-serif;
+    font-size: 18px;
+    line-height: 1.6;
+    margin-bottom: 30px;
+  }
+  
+  html {
+    scroll-behavior: smooth; /* Smooth scroll for all anchor links */
+  }
+  
+  .about_section ul {
+    list-style-type: none; /* Remove default list bullets */
+    padding: 0; /* Remove padding for better alignment */
+    color: #fff; /* White text for the list */
+    font-family: "Kanit", sans-serif; /* Use the same font as the paragraph text */
+    font-size: 18px; /* Same font size as paragraphs */
+  }
+  
+  .about_section ul li {
+    margin-bottom: 10px; /* Space out the list items */
+  }
+  
+  .about_section ul li strong {
+    color: #4deeea; /* Color for the labels to make them stand out */
+    font-weight: bold; /* Make the labels bold */
+  }
+  
+  .about_section ul li sup {
+    font-size: 16px; /* Make the superscript slightly smaller */
+    vertical-align: top; /* Align the superscript properly */
+  }
+  
+  .redirect {
+    position: fixed;
+    bottom: 30px;  /* Distance from the bottom */
+    right: 30px;   /* Distance from the right */
+    z-index: 1000; /* Ensures it's above other content */
+  }
+  
+  .redirect button {
+    font-family: "Kanit", sans-serif; /* Use the same font as the paragraph text */
+    
+    background-color: #4deeea;
+    color: white;
+    font-size: 18px;
+    font-weight: bolder;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    transition: background-color 0.3s ease, color 0.3s ease, -webkit-text-stroke 0.3s ease; /* Transition for text-stroke */
+    
+    /* Default text outline effect (black) */
+  
+    color: rgb(106, 91, 91) /* Text color */
+  }
+  
+  .redirect button:hover {
+    background-color: #393e46;  /* Darker background on hover */
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.5);
+  
+    /* Hover effect - white text outline */
+  
+    color: white; /* Ensure text color stays white */
+  }
+  
+  
+  
