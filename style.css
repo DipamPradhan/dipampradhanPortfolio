@@ -1,20 +1,28 @@
+/* General Styles */
 * {
     margin: 0;
     padding: 0;
   }
   
-  body{
+  body {
     background-color: #393e46;
   }
   
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  a {
+    text-decoration: none;
+    color: white;
+  }
+  
+  /* Header Styles */
   .header_section {
     padding: 10px 0;
-    /* background-color: #393e46; */
     color: white;
-    width: 100%;
-    /* display: flex; */
-    /* justify-content: space-between; */
-    /* gap: 50px;  */
+    max-width: 1100px;
+    margin: 0 auto;
   }
   
   .header_section .container {
@@ -30,11 +38,6 @@
     font-family: "Rubik Doodle Shadow", system-ui;
   }
   
-  a {
-    text-decoration: none;
-    color: white;
-  }
-  
   .header_section ul li {
     font-size: 1.8rem;
     font-weight: 600;
@@ -43,7 +46,6 @@
   
   .header_section ul li:hover {
     cursor: pointer;
-    /* display: inline-block; */
     border-bottom: 2px solid #4deeea;
     background-color: #393e46;
     border-radius: 20px;
@@ -55,70 +57,22 @@
     font-size: 18px;
   }
   
-  .header_section .logo h2 {
-    text-align: center;
-    position: relative;
-    font-size: 40px;
-    /* font-family: ; */
-    font-family: "Press Start 2P", system-ui;
-    padding: 10px 0;
-    /* font-family: ; */
-    transition: color 0.3s ease;
+  .active_page {
+    border-bottom: 1.9px solid #4deeea;
+    border-radius: 20px;
   }
   
-  .header_section .logo h2 a:hover {
-    color: transparent; /* Hide the original text */
-  }
-  .header_section .logo h2 a::after {
-    content: "Dipam";
-    position: absolute;
-    left: 0;
-    right: 0;
-    text-align: center;
-    opacity: 0; /* Initially hidden */
-    transition: opacity 0.3s ease; /* Smoothly fade in the new text */
-  }
-  
-  .header_section .logo h2 a:hover {
-    top: -5px;
-    color: transparent; /* Fade out the original text */
-  }
-  
-  .header_section .logo h2 a:hover::after {
-    opacity: 1; /* Fade in the new text */
-    color: white;
-  }
-  
-  /* .header_section .logo h2::after{
-    content: "Dipam";
-    position: absolute;
-    left: 0;
-    top: 0;
-    opacity: 0;
-    transition: opacity 0.3s;
-    
-  } */
-  
-  /* .header_section .logo h2:hover::after{
-    opacity: 1;
-  } */
-  
-  /* .header_section .logo h2:hover {
-   display: none;
-  } */
-  .header_section .nav_elements ul li {
-    text-align: center;
-    font-size: 19px;
-    margin-top: 13px;
-  }
-  
+  /* Hero Section Styles */
   .hero_section {
     background-color: #393e46;
     position: relative;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 10px 20px;
   }
   
   .hero_section .overlay {
-    height: 800px;
+    height: 600px;
     width: 100%;
   }
   
@@ -130,19 +84,6 @@
     gap: 200px;
   }
   
-  .hero_section_content .code_block .code {
-    color: #4deeea;
-    font-size: 18px;
-  }
-  
-  .hero_section_content .code_block {
-    color: #4deeea;
-    /* text-align: center; */
-    margin-top: 10px;
-    font-size: 25px;
-    font-family: "Kanit", sans-serif;
-  }
-  
   .hero_section_content h1 {
     color: white;
     font-size: 45px;
@@ -152,12 +93,6 @@
   .hero_section_content .intro .intro_first {
     padding-left: 50px;
     margin-top: 20px;
-  }
-  
-  .hero_section_content .intro .code_next {
-    color: #4deeea;
-    font-size: 16px;
-    font-family: "Kanit", sans-serif;
   }
   
   .hero_section_content .intro .name {
@@ -178,7 +113,14 @@
     margin-bottom: 20px;
   }
   
-  /* Initial state: Contact box hidden off-screen to the left */
+  .hero_section_content .image_container img {
+    margin-top: -30px;
+    width: 350px;
+    border-radius: 50%;
+    box-shadow: #4deeea 0px 13px 27px -5px, #4deeea 0px 8px 16px -8px;
+  }
+  
+  /* Contact panel styles */
   .hero_section .contact {
     color: white;
     font-size: 40px;
@@ -188,136 +130,41 @@
     border-radius: 10px;
     flex-direction: column;
     margin-top: 90px;
-    width: 3%; /* You can adjust this width as needed */
+    width: 3%;
     position: fixed;
-    z-index: 1000; 
-  
-    /* Background to match the page */
+    z-index: 1000;
     background: #393e46;
-  
-    /* Initially, border blends with the background */
     border: 2px solid #393e46;
-  
-    /* Strong, sharp inset shadow for deep carving effect */
-    box-shadow: inset 6px 6px 0px rgba(0, 0, 0, 1),   /* Strong inner shadow (no blur) */
-                inset -6px -6px 0px rgba(255, 255, 255, 0.1); /* Subtle highlight */
-  
-    /* Initially, position the contact box off-screen to the left */
-    left: -100%;  /* Start off-screen */
-    transition: left 0.5s ease, box-shadow 0.3s ease-in-out, border 0.3s ease-in-out;
+    box-shadow: inset 6px 6px 0px rgba(0, 0, 0, 1),
+      inset -6px -6px 0px rgba(255, 255, 255, 0.1);
+    left: -100%;
+    transition: left 0.5s ease, box-shadow 0.3s ease-in-out,
+      border 0.3s ease-in-out;
   }
   
-  /* When the contact box is active, slide it in */
   .hero_section .contact.active {
-    left: 0;  /* Move to visible position */
+    left: 0;
   }
   
-  /* Neon Glow on Hover */
   .hero_section .contact:hover {
-    box-shadow: inset 6px 6px 0px rgba(0, 0, 0, 1),  
-                inset -6px -6px 0px rgba(255, 255, 255, 0.1),  
-                0 0 12px #4deeea,  /* Soft glow */
-                0 0 24px #4deeea;  /* Outer neon effect */
-  
-    border: 2px solid #4deeea; /* Neon border on hover */
+    box-shadow: inset 6px 6px 0px rgba(0, 0, 0, 1),
+      inset -6px -6px 0px rgba(255, 255, 255, 0.1), 0 0 12px #4deeea,
+      0 0 24px #4deeea;
+    border: 2px solid #4deeea;
   }
-  
-  
   
   .hero_section .contact i {
     transition: transform 0.3s ease, color 0.3s ease;
-    color: white; /* Default color for icons */
+    color: white;
   }
   
-  /* Neon Glow on Icon Hover */
   .hero_section .contact i:hover {
-    color: #4deeea; /* Neon color on hover */
-    transform: scale(1.1);  /* Slightly grow the icon */
+    color: #4deeea;
+    transform: scale(1.1);
     cursor: pointer;
   }
   
-  
-  
-  
-  
-  
-  
-  .hero_section_content .image_container img {
-    height: 500px;
-    margin-top: -30px;
-    width: 100%;
-    border-radius: 50%;
-    box-shadow: #4deeea 0px 13px 27px -5px, #4deeea 0px 8px 16px -8px;
-  }
-  
-  /* .footer_section .container {
-    display: flex;
-    flex-wrap: wrap;
-    row-gap: 30px;
-    justify-content: space-between;
-    width: 95%;
-    color: white;
-    padding: 20px 0;
-  }
-  
-  .footer_section {
-    background-color: black;
-    padding: 40px 0;
-  }
-  
-  .footer_section ul {
-    list-style: none;
-  }
-  
-  .footer_section h4 {
-    font-size: 22px;
-    padding-bottom: 10px;
-  }
-  
-  .footer_section .footer_link .social_icons ul {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 10px;
-    text-align: center;
-    align-items: center;
-  }
-  
-  .footer_section ul li {
-    padding: 3px 0;
-  }
-  
-  .footer_section .social_icons li {
-    height: 35px;
-    width: 35px;
-    border-radius: 50%;
-    padding: 0;
-    background-color: white;
-    color: black;
-  }
-  
-  .footer_section .social_icons li i {
-    margin-top: 10px;
-    font-size: 17px;
-  }
-  
-  .footer_section p {
-    color: white;
-    text-align: center;
-    width: 85%;
-    margin: auto;
-    margin-top: 40px;
-    border-top: 1px solid white;
-    padding-top: 40px;
-  } */
-  
-  .active_page {
-    border-bottom: 1.9px solid #4deeea;
-    /* background-color: #393e46; */
-    border-radius: 20px;
-    /* opacity: 0.6; */
-    
-  }
-  
+  /* About section styles */
   .about_section {
     background-color: #393e46;
     position: relative;
@@ -325,6 +172,8 @@
     flex-direction: column;
     align-items: center;
     padding: 50px 0;
+    max-width: 1100px;
+    margin: 0 auto;
   }
   
   .about_section .container {
@@ -347,67 +196,347 @@
     margin-bottom: 30px;
   }
   
-  html {
-    scroll-behavior: smooth; /* Smooth scroll for all anchor links */
-  }
-  
   .about_section ul {
-    list-style-type: none; /* Remove default list bullets */
-    padding: 0; /* Remove padding for better alignment */
-    color: #fff; /* White text for the list */
-    font-family: "Kanit", sans-serif; /* Use the same font as the paragraph text */
-    font-size: 18px; /* Same font size as paragraphs */
+    list-style-type: none;
+    padding: 0;
+    color: #fff;
+    font-family: "Kanit", sans-serif;
+    font-size: 18px;
   }
   
   .about_section ul li {
-    margin-bottom: 10px; /* Space out the list items */
+    margin-bottom: 10px;
   }
   
   .about_section ul li strong {
-    color: #4deeea; /* Color for the labels to make them stand out */
-    font-weight: bold; /* Make the labels bold */
+    color: #4deeea;
+    font-weight: bold;
   }
   
   .about_section ul li sup {
-    font-size: 16px; /* Make the superscript slightly smaller */
-    vertical-align: top; /* Align the superscript properly */
+    font-size: 16px;
+    vertical-align: top;
   }
   
+  /* Mobile contact section */
+  .mobile_contact {
+    display: none;
+    background-color: #393e46;
+    padding: 40px 0;
+    text-align: center;
+  }
+  
+  .mobile_contact h2 {
+    color: #4deeea;
+    font-family: "Rock Salt", cursive;
+    font-size: 36px;
+    margin-bottom: 30px;
+  }
+  
+  .mobile_contact .social_links {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+  }
+  
+  .mobile_contact .social_links i {
+    font-size: 35px;
+    color: white;
+    transition: transform 0.3s ease, color 0.3s ease;
+  }
+  
+  .mobile_contact .social_links i:hover {
+    color: #4deeea;
+    transform: scale(1.1);
+  }
+  
+  /* Scroll-to-top button */
   .redirect {
     position: fixed;
-    bottom: 30px;  /* Distance from the bottom */
-    right: 30px;   /* Distance from the right */
-    z-index: 1000; /* Ensures it's above other content */
+    bottom: 30px;
+    right: 30px;
+    z-index: 1000;
   }
   
   .redirect button {
-    font-family: "Kanit", sans-serif; /* Use the same font as the paragraph text */
-    
+    font-family: "Kanit", sans-serif;
     background-color: #4deeea;
-    color: white;
+    color: rgb(106, 91, 91);
     font-size: 18px;
     font-weight: bolder;
     padding: 10px 20px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-  
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-    transition: background-color 0.3s ease, color 0.3s ease, -webkit-text-stroke 0.3s ease; /* Transition for text-stroke */
-    
-    /* Default text outline effect (black) */
-  
-    color: rgb(106, 91, 91) /* Text color */
+    transition: background-color 0.3s ease, color 0.3s ease;
   }
   
   .redirect button:hover {
-    background-color: #393e46;  /* Darker background on hover */
+    background-color: #393e46;
     box-shadow: 0 8px 15px rgba(0, 0, 0, 0.5);
-  
-    /* Hover effect - white text outline */
-  
-    color: white; /* Ensure text color stays white */
+    color: white;
   }
   
+  .contact-close {
+    display: none;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    color: white;
+    font-size: 18px;
+    cursor: pointer;
+  }
   
+  .contact-close:hover {
+    color: #4deeea;
+  }
+  
+  /* Media Queries */
+  @media (max-width: 768px) {
+    /* Header adjustments */
+    .header_section .container {
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    .header_section .nav_elements ul {
+      gap: 20px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+  
+    .header_section ul li {
+      font-size: 1.2rem;
+    }
+  
+    /* Hero section positioning fixes */
+    .hero_section_content {
+      position: relative;
+      top: 0;
+      left: 0;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      width: 100%;
+      margin: 0 auto;
+      gap: 30px;
+      padding-top: 30px;
+    }
+  
+    .hero_section .overlay {
+      height: 0px;
+      width: 100%;
+    }
+  
+    /* Text alignment fixes */
+    .hero_section_content .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+    }
+  
+    .hero_section_content .intro .intro_first,
+    .hero_section_content .intro .intro_next {
+      padding-left: 0;
+      text-align: center;
+    }
+  
+    .hero_section_content h1 {
+      width: 100%;
+    }
+  
+    .hero_section_content .intro .name,
+    .hero_section_content .intro .title {
+      display: block;
+      width: 100%;
+      white-space: nowrap;
+    }
+  
+    /* About section adjustments */
+    .about_section {
+      padding: 30px 0;
+    }
+  
+    .about_section .container {
+      width: 90%;
+      padding: 0 15px;
+    }
+  
+    .about_section h2 {
+      font-size: 30px;
+    }
+  
+    .about_section p {
+      font-size: 16px;
+      line-height: 1.5;
+    }
+  
+    .about_section ul {
+      font-size: 16px;
+    }
+  
+    .about_section ul li {
+      margin-bottom: 8px;
+    }
+  }
+  
+  @media (max-width: 576px) {
+    /* Mobile contact section */
+    .mobile_contact {
+      display: block;
+    }
+  
+    /* Hide sliding contact panel */
+    .hero_section .contact {
+      display: none !important;
+    }
+  
+    /* Mobile contact section adjustments */
+    .mobile_contact h2 {
+      font-size: 28px;
+      margin-bottom: 20px;
+    }
+  
+    .mobile_contact .social_links {
+      gap: 25px;
+    }
+  
+    .mobile_contact .social_links i {
+      font-size: 30px;
+    }
+  
+    /* Improved image sizing */
+    .hero_section_content .image_container img {
+      height: 175px;
+      width: 175px;
+      margin-top: 0;
+    }
+  
+    /* Better text sizing */
+    .hero_section_content h1 {
+      font-size: 22px;
+      margin-bottom: 5px;
+    }
+  
+    .hero_section_content .intro .intro_first {
+      margin-top: 10px;
+    }
+  
+    .hero_section_content .intro .name {
+      font-size: 18px;
+    }
+  
+    .hero_section_content .intro .title {
+      font-size: 16px;
+    }
+  
+    .hero_section_content .intro .intro_next {
+      margin-top: 10px;
+      margin-bottom: 10px;
+    }
+  
+    /* About section improvements */
+    .about_section {
+      padding: 25px 0;
+    }
+  
+    .about_section .container {
+      width: 95%;
+      padding: 0 10px;
+    }
+  
+    .about_section h2 {
+      font-size: 24px;
+      margin-bottom: 15px;
+    }
+  
+    .about_section p {
+      font-size: 15px;
+      line-height: 1.4;
+      margin-bottom: 20px;
+      text-align: left;
+    }
+  
+    .about_section ul {
+      font-size: 15px;
+      text-align: left;
+    }
+  
+    .redirect {
+      bottom: 30px;
+      right: 15px; /* Move it a bit more to the right */
+    }
+  
+    .redirect button {
+      padding: 8px 12px; /* Make button smaller on mobile */
+      font-size: 16px;
+    }
+  
+    /* Add space after mobile contact section to prevent overlap */
+    .mobile_contact {
+      padding-bottom: 60px; /* Add extra space at the bottom */
+    }
+  
+    /* Ensure email icon (last item) has no overlap */
+    .mobile_contact .social_links a:last-child {
+      margin-right: 50px; /* Extra space for last icon */
+    }
+  }
+  
+  @media (max-width: 375px) {
+    /* Very small screens */
+    .header_section .nav_elements ul {
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 5px;
+    }
+  
+    .header_section ul li {
+      font-size: 0.8rem;
+      padding: 2px;
+    }
+  
+    .mobile_contact h2 {
+      font-size: 24px;
+      margin-bottom: 15px;
+    }
+  
+    .mobile_contact .social_links {
+      gap: 20px;
+    }
+  
+    .mobile_contact .social_links i {
+      font-size: 25px;
+    }
+  
+    .hero_section_content .image_container img {
+      height: 150px;
+      width: 150px;
+    }
+  
+    .hero_section_content h1 {
+      font-size: 20px;
+    }
+  
+    .hero_section_content .intro .name {
+      font-size: 16px;
+    }
+  
+    .hero_section_content .intro .title {
+      font-size: 14px;
+    }
+  
+    .redirect {
+      bottom: 20px;
+      right: 10px;
+    }
+  
+    .redirect button {
+      padding: 6px 10px;
+      font-size: 14px;
+    }
+  }
   
