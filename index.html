@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./style.css" />
-    <title>Dipam's Portfolio</title>
+    <title>Dipam Pradhan</title>
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -22,27 +22,19 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
     />
     <!-- Favicons -->
-    <link
-      rel="icon"
-      href="./images/Black White Creative D Letter Logo Design.png"
-      type="image/x-icon"
-    />
+    <link rel="icon" href="./images/logoFinall.png" type="image/x-icon" />
     <link
       rel="apple-touch-icon"
       sizes="180x180"
-      href="./images/Black White Creative D Letter Logo Design.png"
+      href="./images/logoFinall.png"
     />
     <link
       rel="icon"
       type="image/png"
       sizes="192x192"
-      href="./images/Black White Creative D Letter Logo Design.png"
+      href="./images/logoFinall.png"
     />
-    <link
-      rel="mask-icon"
-      href="./images/Black White Creative D Letter Logo Design.png"
-      color="#4deeea"
-    />
+    <link rel="mask-icon" href="./images/logoFinall.png" color="#4deeea" />
   </head>
   <body>
     <!-- Header Section -->
@@ -55,7 +47,7 @@
           <ul>
             <li class="active_page">
               <span class="braces">&lt;</span>
-              <a href="index.html"><span id="home">Home</span> </a>
+              <a href=""><span id="home">Home</span> </a>
               <span class="braces">/ &gt;</span>
             </li>
             <li>
@@ -66,6 +58,11 @@
             <li id="contactButton">
               <span class="braces">&lt;</span>
               Contact
+              <span class="braces">/ &gt;</span>
+            </li>
+            <li id="projectsButton">
+              <span class="braces">&lt;</span>
+              <a href="#project">Projects</a>
               <span class="braces">/ &gt;</span>
             </li>
           </ul>
@@ -149,6 +146,79 @@
         </div>
       </div>
     </div>
+    <hr />
+    <div class="project_section" id="project">
+      <h2>Projects</h2>
+      <p class="view">Click the title to view.</p>
+      <div class="container">
+        <div class="projectInfo">
+          <div class="project">
+            <!-- <div class="project_image">
+            <img src="./images/project1.png" alt="Project 1" />
+          </div> -->
+
+            <div class="project_content">
+              <h3 id="p1">Hangman</h3>
+            </div>
+          </div>
+          <div class="project">
+            <!-- <div class="project_image">
+            <img src="./images/project2.png" alt="Project 2" />
+          </div> -->
+            <div class="project_content">
+              <h3 id="p2">Todo List</h3>
+              <p id="p2info" style="display: none" class="projectTitle">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Quisquam quod, voluptates, quae, quia quos quidem quibusdam
+                dolorum voluptatum nemo doloremque quas. Quisquam quod,
+                voluptates, quae, quia quos quidem quibusdam dolorum voluptatum
+                nemo doloremque quas.
+              </p>
+              <!-- <a href="#">View Project</a> -->
+            </div>
+          </div>
+
+          <span id="repo" style="display: none">Click me For Repo </span>
+          <i class="fa-solid fa-xmark" id="cross" style="display: none"></i>
+        </div>
+        <div
+          class="projectContainer"
+          id="projectContainer"
+          style="display: none"
+        >
+          <div id="projectHangman" style="display: none">
+            <iframe
+              src="https://dipampradhan.github.io/HangmanJS/"
+              frameborder="0"
+            ></iframe>
+          </div>
+          <div id="projectTodo" style="display: none">
+            <iframe
+              src="https://dipampradhan.github.io/ToDoAPPJS/"
+              frameborder="0"
+            ></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="project_section" id="mobProject" style="display: none">
+      <h2>Projects</h2>
+      <div class="mobContainer">
+        <div class="cardHangman" id="cardHangman">
+          <h3>Hangman</h3>
+          <div class="img">
+            <img src="./images/hangman-6.svg" alt="" />
+          </div>
+        </div>
+        <div class="cardTodo" id="cardTodo">
+          <h3>Todo</h3>
+          <div class="img">
+            <img src="./images/image.png" alt="" />
+          </div>
+        </div>
+      </div>
+    </div>
 
     <!-- Mobile Contact Section -->
     <!-- <div class="mobile_contact" id="mobileContact">
@@ -217,6 +287,80 @@
       document.getElementById("home").addEventListener("click", function () {
         var redirect = document.getElementById("redirect");
         redirect.style.display = "none";
+      });
+
+      const projectTitle = document.getElementById("projectContainer");
+      const projectHangman = document.getElementById("projectHangman");
+      const projectTodo = document.getElementById("projectTodo");
+      const p1 = document.getElementById("p1");
+      const p2 = document.getElementById("p2");
+      const cross = document.getElementById("cross");
+      const repo = document.getElementById("repo");
+
+      p1.addEventListener("click", function () {
+        projectTitle.style.display = "block";
+        projectHangman.style.display = "block";
+        projectTodo.style.display = "none";
+        p1.classList.add("selected");
+        p2.classList.remove("selected");
+        window.scrollTo(0, document.body.scrollHeight);
+        cross.style.display = "block";
+        repo.style.display = "block";
+        projectHangman.querySelector("iframe").src =
+          projectHangman.querySelector("iframe").src;
+      });
+
+      p2.addEventListener("click", function () {
+        projectTitle.style.display = "block";
+        projectHangman.style.display = "none";
+        projectTodo.querySelector("iframe").src =
+          projectTodo.querySelector("iframe").src;
+        projectTodo.style.display = "block";
+        p2.classList.add("selected");
+        p1.classList.remove("selected");
+        window.scrollTo(0, document.body.scrollHeight);
+        cross.style.display = "block";
+        repo.style.display = "block";
+      });
+
+      cross.addEventListener("click", function () {
+        projectTitle.style.display = "none";
+        projectHangman.style.display = "none";
+        projectTodo.style.display = "none";
+        cross.style.display = "none";
+        repo.style.display = "none";
+        p1.classList.remove("selected");
+        p2.classList.remove("selected");
+        window.scrollTo(0, document.body.scrollHeight - 800);
+      });
+
+      repo.addEventListener("click", function () {
+        if (p1.classList.contains("selected")) {
+          window.open("https://github.com/DipamPradhan/HangmanJS");
+        } else if (p2.classList.contains("selected")) {
+          window.open("https://github.com/DipamPradhan/ToDoAPPJS");
+        } else {
+          alert("No Repo Available");
+        }
+      });
+      window.addEventListener("resize", function () {
+        const project = document.getElementById("project"); // Replace 'yourDiv' with the ID of your div
+        const mobProject = document.getElementById("mobProject");
+        if (window.innerWidth <= 660) {
+          project.style.display = "none"; // Hides the div
+          mobProject.style.display = "block";
+        } else {
+          project.style.display = "block"; // Shows the div (or use 'inline-block' depending on your layout)
+          mobProject.style.display = "none";
+        }
+        const cardHangman = document.getElementById("cardHangman");
+        const cardTodo = document.getElementById("cardTodo");
+        cardHangman.addEventListener("click", function () {
+          window.open("https://github.com/DipamPradhan/HangmanJS");
+        });
+        cardTodo.addEventListener("click", function () {
+          window.open("https://github.com/DipamPradhan/ToDoAPPJS");
+        });
       });
     </script>
   </body>

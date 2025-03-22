@@ -35,12 +35,12 @@
     display: flex;
     justify-content: space-evenly;
     gap: 50px;
-    font-family: "Rubik Doodle Shadow", system-ui;
+    font-family: "Archivo Black", system-ui;
   }
   
   .header_section ul li {
-    font-size: 1.8rem;
-    font-weight: 600;
+    font-size: 1.2rem;
+    font-weight: 400;
     text-decoration: none;
   }
   
@@ -184,20 +184,193 @@
     width: 80%;
     text-align: center;
   }
+
+  .mobContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 10px;
+
+  }
+
+  .mobContainer .cardHangman,.cardTodo {
+    height: fit-content;
+    width: fit-content;
+     text-align: center;
+    border: 2px solid black;
+    
+    transition: transform 0.5s ease, color 0.5s ease;
+    background-color: rgb(103, 99, 99);
+  }
+
+.cardTodo {
+    height: fit-content;
+    width: fit-content;
+     text-align: center;
+    border: 2px solid black;
+   
+    transition: transform 0.5s ease, color 0.5s ease;
+    background-color:   #13afbe;
+  }
+
+
+  .cardHangman:hover{
+    box-shadow: 0 4px 16px rgba(249, 249, 249, 0.3);
+    background-color: goldenrod;
+    cursor: pointer;
+    transform: scale(1.1);
+  }
+
   
-  .about_section h2 {
-    color: #4deeea;
-    font-family: "Rock Salt", cursive;
-    font-size: 36px;
+  .cardTodo:hover{
+    /* background-color: goldenrod; */
+    cursor: pointer;
+    transform: scale(1.1);
+    box-shadow: 0 4px 16px rgba(249, 249, 249, 0.3);
+  }
+
+  .cardHangman:hover,.cardTodo:hover h3{
+    color: black;
+  }
+  .img img{
+    margin-top: 20px;
+    height: 90px;
+    width: 200px;
+  }
+
+  
+  .project_section .container {
+    /* width: 80%; */
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    /* align-items: center; */
+    /* justify-content: center; */
+    align-content: center;
+    gap: 20px;
+    border: 1px solid #26292e;
+    width: fit-content;
+    margin: auto;
+    margin-bottom: 0px;
+    padding: 10px 15px 10px 15px;
+    height:fit-content;
+    background-color: #393e46;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
     margin-bottom: 20px;
   }
   
-  .about_section p {
+  .about_section h2, .project_section h2{
+    color: #4deeea;
+    font-family: "Rock Salt", cursive;
+    font-size: 36px;
+    /* margin-bottom: 20px; */
+    text-align: center; 
+  }
+
+  .project_section .view{
+    text-align: center;
+  }
+
+  #repo{
+    border: 1px solid black;
+    height: fit-content;
+    width: fit-content;
+    background-color: black;
+    color: white;
+    padding: 5px 10px 5px 10px;
+    border-radius: 10px;
+  position: absolute;
+    right: 10px;
+  
+    margin-top: 35px;
+    transition: transform 0.5s ease, color 0.5s ease;
+  }
+
+
+
+  #repo:hover{
+    background-color: goldenrod;
+    cursor: pointer;
+    transform: scale(1.1);
+    color: black;
+  }
+
+
+  #cross{
+    position: absolute;
+    top: 0;
+    right: 0;
+    font-size: 20px;
+    cursor: pointer;
+    padding: 10px;
+    color: white;
+    transition: transfor 0.5s ease, color 0.5s ease;
+  }
+
+  #cross:hover{
+    color: goldenrod;
+    transform: scale(1.1);
+  }
+  
+  .project_section .container h3{
+    border: 1px solid #303741;
+    /* box-sizing: border-box; */
+    height: fit-content;
+    border-radius: 10px;
+    width: fit-content;
+    padding: 0px 10px 0px 10px;
+    background-color: #4b576b;
+    transition: transform 0.5s ease, color 0.5s ease;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+  }
+
+  .project_section .container h3:hover{
+    background-color: #4deeea;
+    color: black;
+    cursor: pointer;
+    transform: scale(1.1);
+
+  }
+
+  .project_section .container .selected{
+    background-color: goldenrod;
+    color: black;
+    cursor: pointer;
+    transform: scale(1.1);
+  }
+
+
+  
+  
+  .about_section p,.projectTitle,.view{
     color: white;
     font-family: "Kanit", sans-serif;
     font-size: 18px;
     line-height: 1.6;
-    margin-bottom: 30px;
+    /* text-align: center; */
+    /* margin-bottom: 10px; */
+  }
+
+  .projectInfo{
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    text-align: center;
+    justify-content: center;
+    align-items: flex-start;
+    position: relative;
+    padding: 10px;
+    gap: 30px;
+  }
+
+  .project_section h3{
+    color: white;
+    font-family: "Kanit", sans-serif;
+    font-size: 30px;
+    line-height: 1.6;
+    /* margin-bottom: 30px; */
+
   }
   
   .about_section ul {
@@ -222,7 +395,7 @@
     vertical-align: top;
   }
   
-  /* Mobile contact section */
+  /* Mobile contact section
   .mobile_contact {
     display: none;
     background-color: #393e46;
@@ -253,7 +426,7 @@
     color: #4deeea;
     transform: scale(1.1);
   }
-  
+   */
   /* Scroll-to-top button */
   .redirect {
     position: fixed;
@@ -295,6 +468,8 @@
   .contact-close:hover {
     color: #4deeea;
   }
+
+
   
   /* Media Queries */
   @media (max-width: 768px) {
@@ -529,6 +704,42 @@
       }
   
   }
+
+  .projectContainer{
+    align-items: center;
+    align-content: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  iframe {
+    width: 90vw;
+    height:90vh;
+    border: none;
+    display: block;
+    max-width: 100%;
+    transform-origin: top left;
+    overflow: hidden;
+    }
+    @media (max-width: 822px) {
+      iframe {
+        width: 100vw;
+        height: 90vh;
+        transform: scale(0.9); 
+      }
+  };
+
+  
+  @media (max-width: 500px) {
+    iframe {
+        width: 100vw;
+        height: 75vh;
+        transform: scale(0.8);
+    }
+}
+
   
   @media (max-width: 433px) {
     /* Very small screens */
