@@ -301,14 +301,15 @@
     margin-top: -30px;
     border-radius: 50%;
     overflow: hidden;
+    box-shadow: #4deeea 0px 13px 27px -5px, #4deeea 0px 8px 16px -8px;
+    animation: profileGlow 2.5s ease-in-out infinite;
   }
 
   .profile-pic img {
     width: 350px;
     height: 350px;
     border-radius: 50%;
-    box-shadow: #4deeea 0px 13px 27px -5px, #4deeea 0px 8px 16px -8px;
-    animation: profileGlow 2.5s ease-in-out infinite;
+    display: block;
   }
 
   .profile-pic::after {
@@ -334,7 +335,7 @@
       box-shadow: #4deeea 0px 13px 27px -5px, #4deeea 0px 8px 16px -8px;
     }
     50% {
-      box-shadow: #4deeea 0px 13px 27px -5px, #4deeea 0px 8px 16px -8px,
+      box-shadow: #4deeea 0px 13px 35px -3px, #4deeea 0px 8px 20px -6px,
         0 0 30px rgba(77, 238, 234, 0.9), 0 0 60px rgba(77, 238, 234, 0.5);
     }
   }
