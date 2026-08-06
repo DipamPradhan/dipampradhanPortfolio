@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./style.css?v=3" />
+    <link rel="stylesheet" href="./style.css?v=4" />
     <title>Dipam Pradhan</title>
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -67,6 +67,9 @@
             </li>
           </ul>
         </nav>
+        <button class="mobile-contact-btn" id="mobileContactBtn" aria-label="Contact">
+          <i class="fa-solid fa-envelope"></i>
+        </button>
       </div>
     </header>
 
@@ -103,20 +106,20 @@
             <p class="intro_next">
               <span class="title">CSIT Student</span>
             </p>
-            <div class="resume_container">
-              <button class="resume-btn" id="resumeBtn">
-                <span class="resume-btn-icon">
-                  <img src="./images/download-pdf.png" alt="Download PDF" />
-                </span>
-                <span>View Resume</span>
-              </button>
-            </div>
           </div>
         </div>
         <div class="image_container">
           <div class="profile-pic">
             <img src="./images/profile-pic (2).png" alt="Dipam Pradhan" />
           </div>
+        </div>
+        <div class="resume_container">
+          <button class="resume-btn" id="resumeBtn">
+            <span class="resume-btn-icon">
+              <img src="./images/download-pdf.png" alt="Download PDF" />
+            </span>
+            <span>View Resume</span>
+          </button>
         </div>
       </div>
     </div>
@@ -288,26 +291,6 @@
             <a href="https://gig-work.me" target="_blank">gig-work.me</a>
           </li>
         </ul>
-      </div>
-      <div class="mobContainer">
-        <div class="cardHangman" id="cardHangman">
-          <h3>Hangman</h3>
-          <div class="img">
-            <img src="./images/hangman-6.svg" alt="" />
-          </div>
-        </div>
-        <div class="cardTodo" id="cardTodo">
-          <h3>Todo</h3>
-          <div class="img">
-            <img src="./images/image.png" alt="" />
-          </div>
-        </div>
-        <div class="cardBaghchal" id="cardBaghchal">
-          <h3>Baghchal</h3>
-          <div class="img">
-            <img src="./images/tiger.png" alt="" />
-          </div>
-        </div>
       </div>
     </div>
 
@@ -488,6 +471,15 @@
         });
 
       document
+        .getElementById("mobileContactBtn")
+        .addEventListener("click", function () {
+          var contactDiv = document.getElementById("contactDiv");
+
+          // Toggle the 'active' class to slide in/out the contact div
+          contactDiv.classList.toggle("active");
+        });
+
+      document
         .getElementById("redirect")
         .addEventListener("click", function () {
           window.scrollTo(0, 0);
@@ -597,16 +589,6 @@
           mobProject.style.display = "none";
         }
       }
-
-      document.getElementById("cardHangman").addEventListener("click", function () {
-        window.open("https://github.com/DipamPradhan/HangmanJS");
-      });
-      document.getElementById("cardTodo").addEventListener("click", function () {
-        window.open("https://github.com/DipamPradhan/ToDoAPPJS");
-      });
-      document.getElementById("cardBaghchal").addEventListener("click", function () {
-        window.open("https://github.com/DipamPradhan/baghchal");
-      });
 
       updateProjectView();
       window.addEventListener("resize", updateProjectView);
