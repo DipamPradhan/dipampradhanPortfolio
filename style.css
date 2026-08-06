@@ -1,7 +1,10 @@
 /* General Styles */
-* {
+*,
+*::before,
+*::after {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
   }
   
   body {
@@ -293,6 +296,56 @@
     border: none;
     border-radius: 5px;
   }
+
+  .resume-viewer {
+    flex: 1;
+    min-height: 0;
+    overflow-y: auto;
+    overflow-x: hidden;
+    background: #2b2f36;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 8px;
+  }
+
+  .resume-viewer .resume-page {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+    border-radius: 2px;
+  }
+
+  .resume-viewer .resume-page + .resume-page {
+    margin-top: 12px;
+  }
+
+  .resume-loading {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    width: 100%;
+    height: 100%;
+    color: white;
+    font-family: "Kanit", sans-serif;
+    font-size: 16px;
+    padding: 20px;
+    text-align: center;
+  }
+
+  .resume-loading i {
+    color: #4deeea;
+    font-size: 30px;
+  }
+
+  .resume-fallback a {
+    display: inline-block;
+    margin-top: 10px;
+  }
   
   .profile-pic {
     position: relative;
@@ -302,7 +355,6 @@
     border-radius: 50%;
     overflow: hidden;
     box-shadow: #4deeea 0px 13px 27px -5px, #4deeea 0px 8px 16px -8px;
-    animation: profileGlow 2.5s ease-in-out infinite;
   }
 
   .profile-pic img {
@@ -326,18 +378,7 @@
       rgba(255, 255, 255, 0) 100%
     );
     transform: skewX(-20deg);
-    animation: resumeShine 3.5s infinite;
-  }
-
-  @keyframes profileGlow {
-    0%,
-    100% {
-      box-shadow: #4deeea 0px 13px 27px -5px, #4deeea 0px 8px 16px -8px;
-    }
-    50% {
-      box-shadow: #4deeea 0px 13px 35px -3px, #4deeea 0px 8px 20px -6px,
-        0 0 30px rgba(77, 238, 234, 0.9), 0 0 60px rgba(77, 238, 234, 0.5);
-    }
+    animation: resumeShine 3s infinite;
   }
   
   /* Contact panel styles */
@@ -1010,33 +1051,20 @@
     flex-direction: column;
     justify-content: center;
     overflow: hidden;
+    width: 100%;
+    max-width: 100%;
   }
 
-  iframe {
-    width: 90vw;
-    height:90vh;
+  .projectContainer iframe {
+    width: min(90vw, 1000px);
+    height: 80vh;
     border: none;
     display: block;
     max-width: 100%;
-    transform-origin: top left;
-    overflow: hidden;
-    }
-    @media (max-width: 822px) {
-      iframe {
-        width: 100vw;
-        height: 90vh;
-        transform: scale(0.9); 
-      }
-  };
-
-  
-  @media (max-width: 500px) {
-    iframe {
-        width: 100vw;
-        height: 75vh;
-        transform: scale(0.8);
-    }
-}
+    border-radius: 8px;
+    background: #2b2f36;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+  }
 
   
   @media (max-width: 433px) {
@@ -1172,5 +1200,202 @@
       .about_section ul li {
         margin-bottom: 8px;
       }
+  }
+
+  /* ==========================================
+     Responsive overrides (mobile)
+     ========================================== */
+  @media (max-width: 768px) {
+    .header_section {
+      padding: 10px 8px;
+    }
+
+    .header_section .container {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .header_section .nav_elements ul {
+      gap: 12px 16px;
+      flex-wrap: wrap;
+      justify-content: center;
+      row-gap: 8px;
+    }
+
+    .header_section ul li {
+      font-size: 1rem;
+    }
+
+    .header_section ul li .braces {
+      font-size: 15px;
+    }
+
+    /* Hero section: let content decide the height (no clipping) */
+    .hero_section {
+      height: auto;
+      min-height: 0;
+      margin-top: 0;
+      padding: 24px 16px;
+    }
+
+    .hero_section_content {
+      position: relative;
+      top: 0;
+      left: 0;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      width: 100%;
+      margin: 0;
+      padding-top: 10px;
+      gap: 28px;
+    }
+
+    .hero_section_content .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+    }
+
+    .hero_section_content .overlay {
+      height: 0;
+    }
+
+    .hero_section_content .intro .intro_first,
+    .hero_section_content .intro .intro_next {
+      padding-left: 0;
+      text-align: center;
+      margin-top: 16px;
+    }
+
+    .hero_section_content h1 {
+      font-size: clamp(28px, 8vw, 45px);
+      width: 100%;
+    }
+
+    .hero_section_content .intro .name,
+    .hero_section_content .intro .title {
+      display: block;
+      width: 100%;
+      white-space: nowrap;
+      font-size: clamp(20px, 6vw, 30px);
+    }
+
+    .resume_container {
+      padding-left: 0;
+      margin-top: 22px;
+      text-align: center;
+    }
+
+    .resume-btn {
+      font-size: clamp(14px, 4vw, 18px);
+      padding: 10px 18px 10px 10px;
+    }
+
+    .resume-btn-icon,
+    .resume-btn-icon img {
+      width: 24px;
+      height: 24px;
+    }
+
+    .image_container {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+    }
+
+    .hero_section_content .image_container img,
+    .profile-pic,
+    .profile-pic img {
+      width: min(60vw, 220px);
+      height: min(60vw, 220px);
+    }
+
+    .profile-pic {
+      margin-top: 0;
+    }
+
+    /* Contact side panel */
+    .hero_section .contact {
+      width: auto;
+      margin-top: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      padding: 16px 12px;
+      gap: 24px;
+    }
+
+    /* About section */
+    .about_section .container {
+      width: 90%;
+      box-sizing: border-box;
+      padding: 0 15px;
+    }
+
+    .about_section h2 {
+      font-size: 28px;
+    }
+
+    .about_section p,
+    .about_section ul {
+      font-size: 16px;
+    }
+
+    .about_section ul li {
+      overflow-wrap: break-word;
+    }
+
+    /* Project links: prevent overflow from long URLs */
+    .projectLinks {
+      width: 92%;
+      max-width: 700px;
+      padding: 12px 16px;
+    }
+
+    .projectLinks ul li,
+    .projectLinks ul li a {
+      overflow-wrap: anywhere;
+      word-break: break-word;
+    }
+
+    .projectLinks ul li {
+      font-size: 16px;
+    }
+
+    .project_section .container {
+      max-width: 100vw;
+      padding: 10px 10px;
+    }
+
+    .project_section .view,
+    .about_section p {
+      overflow-wrap: break-word;
+    }
+
+    .mobContainer .cardHangman,
+    .mobContainer .cardTodo,
+    .mobContainer .cardBaghchal {
+      width: 88%;
+      max-width: 340px;
+    }
+
+    /* Resume modal: full screen on mobile */
+    .resume-modal-content {
+      width: 100%;
+      height: 100%;
+      max-width: none;
+      border: none;
+      border-radius: 0;
+      padding: 8px;
+    }
+
+    .resume-modal-header {
+      padding: 2px 4px 8px 4px;
+    }
+
+    .resume-download {
+      font-size: 15px;
+    }
   }
   

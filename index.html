@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./style.css?v=2" />
+    <link rel="stylesheet" href="./style.css?v=3" />
     <title>Dipam Pradhan</title>
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -360,7 +360,12 @@
           >
           <i class="fa-solid fa-xmark" id="resumeClose"></i>
         </div>
-        <iframe src="./DipamPradhan_Resume.pdf"></iframe>
+        <div class="resume-viewer" id="resumeViewer">
+          <div class="resume-loading">
+            <i class="fa-solid fa-spinner fa-spin"></i>
+            <span>Loading Resume...</span>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -371,10 +376,82 @@
       const resumeModal = document.getElementById("resumeModal");
       const resumeOverlay = document.getElementById("resumeOverlay");
       const resumeClose = document.getElementById("resumeClose");
+      const resumeViewer = document.getElementById("resumeViewer");
+
+      const RESUME_PDF_URL = "./DipamPradhan_Resume.pdf";
+      const PDFJS_CDN = "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/";
+      let resumePdfDoc = null;
+      let resumeRenderTimer = null;
+
+      function loadPdfJs() {
+        return new Promise(function (resolve, reject) {
+          if (window.pdfjsLib) {
+            resolve();
+            return;
+          }
+          var script = document.createElement("script");
+          script.src = PDFJS_CDN + "pdf.min.js";
+          script.onload = function () {
+            pdfjsLib.GlobalWorkerOptions.workerSrc = PDFJS_CDN + "pdf.worker.min.js";
+            resolve();
+          };
+          script.onerror = function () {
+            reject(new Error("Failed to load PDF viewer"));
+          };
+          document.head.appendChild(script);
+        });
+      }
+
+      function showResumeFallback() {
+        resumeViewer.innerHTML =
+          '<div class="resume-loading resume-fallback">' +
+          "<p>Your browser could not load the PDF viewer.</p>" +
+          '<a class="resume-download" href="' +
+          RESUME_PDF_URL +
+          '" target="_blank" rel="noopener">Open Resume</a>' +
+          "</div>";
+      }
+
+      async function drawResumePages() {
+        if (!resumePdfDoc) return;
+        const containerWidth = resumeViewer.clientWidth - 16;
+        if (containerWidth <= 0) return;
+        resumeViewer.innerHTML = "";
+        const dpr = window.devicePixelRatio || 1;
+        for (let i = 1; i <= resumePdfDoc.numPages; i++) {
+          const page = await resumePdfDoc.getPage(i);
+          const base = page.getViewport({ scale: 1 });
+          const scale = (containerWidth / base.width) * dpr;
+          const viewport = page.getViewport({ scale: scale });
+          const canvas = document.createElement("canvas");
+          canvas.className = "resume-page";
+          canvas.width = viewport.width;
+          canvas.height = viewport.height;
+          canvas.style.width = containerWidth + "px";
+          canvas.style.height = viewport.height / dpr + "px";
+          resumeViewer.appendChild(canvas);
+          await page
+            .render({ canvasContext: canvas.getContext("2d"), viewport: viewport })
+            .promise;
+        }
+      }
+
+      async function renderResume() {
+        resumeViewer.innerHTML =
+          '<div class="resume-loading"><i class="fa-solid fa-spinner fa-spin"></i><span>Loading Resume...</span></div>';
+        try {
+          await loadPdfJs();
+          resumePdfDoc = await pdfjsLib.getDocument(RESUME_PDF_URL).promise;
+          drawResumePages();
+        } catch (err) {
+          showResumeFallback();
+        }
+      }
 
       document.getElementById("resumeBtn").addEventListener("click", function () {
         resumeModal.style.display = "flex";
         document.body.style.overflow = "hidden";
+        renderResume();
       });
 
       function closeResumeModal() {
@@ -388,6 +465,15 @@
         if (e.key === "Escape") {
           closeResumeModal();
         }
+      });
+
+      window.addEventListener("resize", function () {
+        clearTimeout(resumeRenderTimer);
+        resumeRenderTimer = setTimeout(function () {
+          if (resumeModal.style.display === "flex" && resumePdfDoc) {
+            drawResumePages();
+          }
+        }, 200);
       });
 
       // Contact button functionality
@@ -500,29 +586,30 @@
           alert("No Repo Available");
         }
       });
-      window.addEventListener("resize", function () {
-        const project = document.getElementById("project"); // Replace 'yourDiv' with the ID of your div
+      function updateProjectView() {
+        const project = document.getElementById("project");
         const mobProject = document.getElementById("mobProject");
         if (window.innerWidth <= 660) {
-          project.style.display = "none"; // Hides the div
+          project.style.display = "none";
           mobProject.style.display = "block";
         } else {
-          project.style.display = "block"; // Shows the div (or use 'inline-block' depending on your layout)
+          project.style.display = "block";
           mobProject.style.display = "none";
         }
-        const cardHangman = document.getElementById("cardHangman");
-        const cardTodo = document.getElementById("cardTodo");
-        const cardBaghchal = document.getElementById("cardBaghchal");
-        cardHangman.addEventListener("click", function () {
-          window.open("https://github.com/DipamPradhan/HangmanJS");
-        });
-        cardTodo.addEventListener("click", function () {
-          window.open("https://github.com/DipamPradhan/ToDoAPPJS");
-        });
-        cardBaghchal.addEventListener("click", function () {
-          window.open("https://github.com/DipamPradhan/baghchal");
-        });
+      }
+
+      document.getElementById("cardHangman").addEventListener("click", function () {
+        window.open("https://github.com/DipamPradhan/HangmanJS");
       });
+      document.getElementById("cardTodo").addEventListener("click", function () {
+        window.open("https://github.com/DipamPradhan/ToDoAPPJS");
+      });
+      document.getElementById("cardBaghchal").addEventListener("click", function () {
+        window.open("https://github.com/DipamPradhan/baghchal");
+      });
+
+      updateProjectView();
+      window.addEventListener("resize", updateProjectView);
     </script>
   </body>
 </html>
