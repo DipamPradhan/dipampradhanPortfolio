@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -103,6 +103,12 @@
             <p class="intro_next">
               <span class="title">CSIT Student</span>
             </p>
+            <div class="resume_container">
+              <button class="resume-btn" id="resumeBtn">
+                <img src="./images/download-pdf.png" alt="Download PDF" />
+                <span>View Resume</span>
+              </button>
+            </div>
           </div>
         </div>
         <div class="image_container">
@@ -133,7 +139,7 @@
           <ul>
             <!-- <li><strong>Date of Birth:</strong> 2061/06/10</li> -->
             <li><strong>University:</strong> Tribhuvan University</li>
-            <li><strong>Current Semester:</strong> 5<sup>th</sup> Semester</li>
+            <li><strong>Current Semester:</strong> 8<sup>th</sup> Semester</li>
             <li>
               <strong>Course:</strong> B.Sc. in Computer Science and Information
               Technology
@@ -150,6 +156,40 @@
     <div class="project_section" id="project">
       <h2>Projects</h2>
       <p class="view">Click the title to view.</p>
+      <div class="projectLinks">
+        <h4>Simple Games</h4>
+        <ul>
+          <li>
+            Hangman —
+            <a
+              href="https://hangman.dipampradhan.com.np/"
+              target="_blank"
+              >hangman.dipampradhan.com.np</a
+            >
+          </li>
+          <li>
+            Todo —
+            <a href="https://todo.dipampradhan.com.np/" target="_blank"
+              >todo.dipampradhan.com.np</a
+            >
+          </li>
+          <li>
+            Baghchal —
+            <a
+              href="https://baghchal.dipampradhan.com.np/"
+              target="_blank"
+              >baghchal.dipampradhan.com.np</a
+            >
+          </li>
+        </ul>
+        <h4>Final Year Project</h4>
+        <ul>
+          <li>
+            GigWorker Platform —
+            <a href="https://gig-work.me" target="_blank">gig-work.me</a>
+          </li>
+        </ul>
+      </div>
       <div class="container">
         <div class="projectInfo">
           <div class="project">
@@ -177,6 +217,11 @@
               <!-- <a href="#">View Project</a> -->
             </div>
           </div>
+          <div class="project">
+            <div class="project_content">
+              <h3 id="p3">Baghchal</h3>
+            </div>
+          </div>
 
           <span id="repo" style="display: none">Click me For Repo </span>
           <i class="fa-solid fa-xmark" id="cross" style="display: none"></i>
@@ -188,13 +233,19 @@
         >
           <div id="projectHangman" style="display: none">
             <iframe
-              src="https://dipampradhan.github.io/HangmanJS/"
+              src="https://hangman.dipampradhan.com.np/"
               frameborder="0"
             ></iframe>
           </div>
           <div id="projectTodo" style="display: none">
             <iframe
-              src="https://dipampradhan.github.io/ToDoAPPJS/"
+              src="https://todo.dipampradhan.com.np/"
+              frameborder="0"
+            ></iframe>
+          </div>
+          <div id="projectBaghchal" style="display: none">
+            <iframe
+              src="https://baghchal.dipampradhan.com.np/"
               frameborder="0"
             ></iframe>
           </div>
@@ -204,6 +255,36 @@
 
     <div class="project_section" id="mobProject" style="display: none">
       <h2>Projects</h2>
+      <div class="projectLinks">
+        <h4>Simple Games</h4>
+        <ul>
+          <li>
+            Hangman —
+            <a href="https://hangman.dipampradhan.com.np/" target="_blank"
+              >hangman.dipampradhan.com.np</a
+            >
+          </li>
+          <li>
+            Todo —
+            <a href="https://todo.dipampradhan.com.np/" target="_blank"
+              >todo.dipampradhan.com.np</a
+            >
+          </li>
+          <li>
+            Baghchal —
+            <a href="https://baghchal.dipampradhan.com.np/" target="_blank"
+              >baghchal.dipampradhan.com.np</a
+            >
+          </li>
+        </ul>
+        <h4>Final Year Project</h4>
+        <ul>
+          <li>
+            GigWorker Platform —
+            <a href="https://gig-work.me" target="_blank">gig-work.me</a>
+          </li>
+        </ul>
+      </div>
       <div class="mobContainer">
         <div class="cardHangman" id="cardHangman">
           <h3>Hangman</h3>
@@ -215,6 +296,12 @@
           <h3>Todo</h3>
           <div class="img">
             <img src="./images/image.png" alt="" />
+          </div>
+        </div>
+        <div class="cardBaghchal" id="cardBaghchal">
+          <h3>Baghchal</h3>
+          <div class="img">
+            <img src="./images/tiger.png" alt="" />
           </div>
         </div>
       </div>
@@ -256,8 +343,49 @@
       </a>
     </div>
 
+    <!-- Resume Modal -->
+    <div class="resume-modal" id="resumeModal" style="display: none">
+      <div class="resume-overlay" id="resumeOverlay"></div>
+      <div class="resume-modal-content">
+        <div class="resume-modal-header">
+          <a
+            class="resume-download"
+            href="./DipamPradhan_Resume.pdf"
+            download="DipamPradhan_Resume.pdf"
+            >Download Resume</a
+          >
+          <i class="fa-solid fa-xmark" id="resumeClose"></i>
+        </div>
+        <iframe src="./DipamPradhan_Resume.pdf"></iframe>
+      </div>
+    </div>
+
     <!-- JavaScript -->
     <script>
+      // Resume modal functionality
+
+      const resumeModal = document.getElementById("resumeModal");
+      const resumeOverlay = document.getElementById("resumeOverlay");
+      const resumeClose = document.getElementById("resumeClose");
+
+      document.getElementById("resumeBtn").addEventListener("click", function () {
+        resumeModal.style.display = "flex";
+        document.body.style.overflow = "hidden";
+      });
+
+      function closeResumeModal() {
+        resumeModal.style.display = "none";
+        document.body.style.overflow = "";
+      }
+      resumeClose.addEventListener("click", closeResumeModal);
+      resumeOverlay.addEventListener("click", closeResumeModal);
+
+      document.addEventListener("keydown", function (e) {
+        if (e.key === "Escape") {
+          closeResumeModal();
+        }
+      });
+
       // Contact button functionality
 
       document
@@ -292,8 +420,10 @@
       const projectTitle = document.getElementById("projectContainer");
       const projectHangman = document.getElementById("projectHangman");
       const projectTodo = document.getElementById("projectTodo");
+      const projectBaghchal = document.getElementById("projectBaghchal");
       const p1 = document.getElementById("p1");
       const p2 = document.getElementById("p2");
+      const p3 = document.getElementById("p3");
       const cross = document.getElementById("cross");
       const repo = document.getElementById("repo");
 
@@ -301,8 +431,10 @@
         projectTitle.style.display = "block";
         projectHangman.style.display = "block";
         projectTodo.style.display = "none";
+        projectBaghchal.style.display = "none";
         p1.classList.add("selected");
         p2.classList.remove("selected");
+        p3.classList.remove("selected");
         window.scrollTo(0, document.body.scrollHeight);
         cross.style.display = "block";
         repo.style.display = "block";
@@ -316,8 +448,25 @@
         projectTodo.querySelector("iframe").src =
           projectTodo.querySelector("iframe").src;
         projectTodo.style.display = "block";
+        projectBaghchal.style.display = "none";
         p2.classList.add("selected");
         p1.classList.remove("selected");
+        p3.classList.remove("selected");
+        window.scrollTo(0, document.body.scrollHeight);
+        cross.style.display = "block";
+        repo.style.display = "block";
+      });
+
+      p3.addEventListener("click", function () {
+        projectTitle.style.display = "block";
+        projectHangman.style.display = "none";
+        projectTodo.style.display = "none";
+        projectBaghchal.querySelector("iframe").src =
+          projectBaghchal.querySelector("iframe").src;
+        projectBaghchal.style.display = "block";
+        p3.classList.add("selected");
+        p1.classList.remove("selected");
+        p2.classList.remove("selected");
         window.scrollTo(0, document.body.scrollHeight);
         cross.style.display = "block";
         repo.style.display = "block";
@@ -327,10 +476,12 @@
         projectTitle.style.display = "none";
         projectHangman.style.display = "none";
         projectTodo.style.display = "none";
+        projectBaghchal.style.display = "none";
         cross.style.display = "none";
         repo.style.display = "none";
         p1.classList.remove("selected");
         p2.classList.remove("selected");
+        p3.classList.remove("selected");
         window.scrollTo(0, document.body.scrollHeight - 800);
       });
 
@@ -339,6 +490,8 @@
           window.open("https://github.com/DipamPradhan/HangmanJS");
         } else if (p2.classList.contains("selected")) {
           window.open("https://github.com/DipamPradhan/ToDoAPPJS");
+        } else if (p3.classList.contains("selected")) {
+          window.open("https://github.com/DipamPradhan/baghchal");
         } else {
           alert("No Repo Available");
         }
@@ -355,11 +508,15 @@
         }
         const cardHangman = document.getElementById("cardHangman");
         const cardTodo = document.getElementById("cardTodo");
+        const cardBaghchal = document.getElementById("cardBaghchal");
         cardHangman.addEventListener("click", function () {
           window.open("https://github.com/DipamPradhan/HangmanJS");
         });
         cardTodo.addEventListener("click", function () {
           window.open("https://github.com/DipamPradhan/ToDoAPPJS");
+        });
+        cardBaghchal.addEventListener("click", function () {
+          window.open("https://github.com/DipamPradhan/baghchal");
         });
       });
     </script>

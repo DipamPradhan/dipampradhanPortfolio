@@ -117,6 +117,173 @@
     margin-bottom: 20px;
   }
   
+  .resume_container {
+    padding-left: 50px;
+    margin-top: 10px;
+  }
+
+  .resume-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    border: none;
+    outline: 2px solid #4deeea;
+    outline-offset: 3px;
+    height: fit-content;
+    width: fit-content;
+    background: linear-gradient(135deg, #1a1e26 0%, #3a4150 100%);
+    color: white;
+    font-family: "Kanit", sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 10px 24px 10px 12px;
+    border-radius: 50px;
+    box-shadow: 0 0 12px rgba(77, 238, 234, 0.4),
+      inset 0 1px 0 rgba(255, 255, 255, 0.15);
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease,
+      outline-color 0.3s ease;
+  }
+
+  .resume-btn img {
+    width: 28px;
+    height: 28px;
+    filter: brightness(0) invert(1);
+  }
+
+  .resume-btn::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -150%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(
+      120deg,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(255, 255, 255, 0.4) 50%,
+      rgba(255, 255, 255, 0) 100%
+    );
+    transform: skewX(-25deg);
+    animation: resumeShine 3s infinite;
+  }
+
+  @keyframes resumeShine {
+    0% {
+      left: -150%;
+    }
+    50% {
+      left: 150%;
+    }
+    100% {
+      left: 150%;
+    }
+  }
+
+  .resume-btn:hover {
+    background: linear-gradient(135deg, #13afbe 0%, #4deeea 100%);
+    color: black;
+    transform: scale(1.08) translateY(-2px);
+    outline-color: goldenrod;
+    box-shadow: 0 0 20px rgba(77, 238, 234, 0.8),
+      0 8px 20px rgba(0, 0, 0, 0.4);
+  }
+
+  .resume-btn:hover img {
+    filter: brightness(0) invert(0);
+  }
+
+  .resume-btn:active {
+    transform: scale(0.97);
+  }
+
+  .resume-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .resume-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+  }
+
+  .resume-modal-content {
+    position: relative;
+    background-color: #393e46;
+    border: 2px solid #4deeea;
+    border-radius: 10px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.6);
+    padding: 10px;
+    width: 80vw;
+    height: 85vh;
+    max-width: 1000px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .resume-modal-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 10px 10px 10px;
+  }
+
+  .resume-download {
+    border: 1px solid black;
+    height: fit-content;
+    width: fit-content;
+    background-color: black;
+    color: white;
+    font-family: "Kanit", sans-serif;
+    font-size: 16px;
+    padding: 5px 15px 5px 15px;
+    border-radius: 10px;
+    transition: transform 0.5s ease, color 0.5s ease;
+  }
+
+  .resume-download:hover {
+    background-color: goldenrod;
+    cursor: pointer;
+    transform: scale(1.1);
+    color: black;
+  }
+
+  #resumeClose {
+    font-size: 25px;
+    cursor: pointer;
+    padding: 5px;
+    color: white;
+    transition: transform 0.5s ease, color 0.5s ease;
+  }
+
+  #resumeClose:hover {
+    color: goldenrod;
+    transform: scale(1.1);
+  }
+
+  .resume-modal-content iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    border-radius: 5px;
+  }
+  
   .hero_section_content .image_container img {
     margin-top: -30px;
     width: 350px;
@@ -194,7 +361,7 @@
 
   }
 
-  .mobContainer .cardHangman,.cardTodo {
+  .mobContainer .cardHangman,.cardTodo,.cardBaghchal {
     height: fit-content;
     width: fit-content;
      text-align: center;
@@ -214,6 +381,16 @@
     background-color:   #13afbe;
   }
 
+.cardBaghchal {
+    height: fit-content;
+    width: fit-content;
+     text-align: center;
+    border: 2px solid black;
+   
+    transition: transform 0.5s ease, color 0.5s ease;
+    background-color:   #4b576b;
+  }
+
 
   .cardHangman:hover{
     box-shadow: 0 4px 16px rgba(249, 249, 249, 0.3);
@@ -230,7 +407,13 @@
     box-shadow: 0 4px 16px rgba(249, 249, 249, 0.3);
   }
 
-  .cardHangman:hover,.cardTodo:hover h3{
+  .cardBaghchal:hover{
+    cursor: pointer;
+    transform: scale(1.1);
+    box-shadow: 0 4px 16px rgba(249, 249, 249, 0.3);
+  }
+
+  .cardHangman:hover,.cardTodo:hover,.cardBaghchal:hover h3{
     color: black;
   }
   .img img{
@@ -371,6 +554,57 @@
     line-height: 1.6;
     /* margin-bottom: 30px; */
 
+  }
+
+  .projectLinks{
+    border: 1px solid #26292e;
+    width: fit-content;
+    margin: auto;
+    margin-bottom: 20px;
+    padding: 10px 25px 10px 25px;
+    height: fit-content;
+    background-color: #393e46;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+    text-align: center;
+  }
+
+  .projectLinks h4{
+    color: #4deeea;
+    font-family: "Kanit", sans-serif;
+    font-size: 22px;
+    margin: 10px 0 5px 0;
+  }
+
+  .projectLinks h4:first-child{
+    margin-top: 0;
+  }
+
+  .projectLinks ul{
+    list-style-type: none;
+    padding: 0;
+    margin: 0 0 10px 0;
+  }
+
+  .projectLinks ul:last-child{
+    margin-bottom: 0;
+  }
+
+  .projectLinks ul li{
+    color: white;
+    font-family: "Kanit", sans-serif;
+    font-size: 18px;
+    line-height: 1.8;
+  }
+
+  .projectLinks ul li a{
+    color: #4deeea;
+    text-decoration: none;
+    transition: color 0.5s ease;
+  }
+
+  .projectLinks ul li a:hover{
+    color: goldenrod;
+    text-decoration: underline;
   }
   
   .about_section ul {
@@ -543,6 +777,11 @@
       padding-left: 0;
       text-align: center;
     }
+
+    .resume_container {
+      padding-left: 0;
+      text-align: center;
+    }
   
     .hero_section_content h1 {
       width: 100%;
@@ -659,6 +898,11 @@
     
       .hero_section_content .intro .intro_first,
       .hero_section_content .intro .intro_next {
+        padding-left: 0;
+        text-align: center;
+      }
+
+      .resume_container {
         padding-left: 0;
         text-align: center;
       }
@@ -821,6 +1065,11 @@
     
       .hero_section_content .intro .intro_first,
       .hero_section_content .intro .intro_next {
+        padding-left: 0;
+        text-align: center;
+      }
+
+      .resume_container {
         padding-left: 0;
         text-align: center;
       }
